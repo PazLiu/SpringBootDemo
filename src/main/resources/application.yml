@@ -1,0 +1,50 @@
+
+-Xms: 2048M
+
+-Xmx: 4096M
+-Xmn: 2048M
+
+server:
+  port: 8079
+  ssl:
+    key-store:  classpath:keystore.p12
+    key-store-password: 123456
+    keyStoreType: PKCS12
+    keyAlias: tomcat
+  servlet:
+    context-path: /gg
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/pinyins?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    connectionProperties: druid.stat.mergeSql=true
+  application:
+    name: service-ribbon
+
+mybatis:
+    type-aliases-package: com.ss.domain
+    mapper-locations: classpath:mapping/*.xml
+
+
+PageHelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+#pagehelper:
+#  dialect: mysql
+#  reasonable: false
+#  support-methods-arguments: true;
+#  params: count=countSql
